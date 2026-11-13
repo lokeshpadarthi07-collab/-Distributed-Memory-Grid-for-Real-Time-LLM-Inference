@@ -23,6 +23,7 @@ from dmg.tensor_parallel.interfaces import (
     ParallelAttentionProtocol,
     TensorSplitterProtocol,
 )
+from dmg.tensor_parallel.splitting import TensorMerger, TensorSplitter
 
 __all__ = [
     "AttentionType",
@@ -38,4 +39,6 @@ __all__ = [
     "CommunicatorProtocol",
     "TensorSplitterProtocol",
     "ParallelAttentionProtocol",
+    "TensorSplitter",
+    "TensorMerger",
 ]
