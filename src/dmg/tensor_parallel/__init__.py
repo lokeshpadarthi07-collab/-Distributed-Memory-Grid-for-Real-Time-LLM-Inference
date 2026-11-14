@@ -4,6 +4,12 @@ Distributed Memory Grid - Member 3: Tensor Parallelism (Attention Heads).
 
 from __future__ import annotations
 
+from dmg.tensor_parallel.communicator import (
+    MockCommunicator,
+    MockCommunicatorGroup,
+    TorchDistributedCommunicator,
+    create_communicator,
+)
 from dmg.tensor_parallel.config import (
     AttentionType,
     CommBackend,
@@ -41,4 +47,8 @@ __all__ = [
     "ParallelAttentionProtocol",
     "TensorSplitter",
     "TensorMerger",
+    "MockCommunicator",
+    "MockCommunicatorGroup",
+    "TorchDistributedCommunicator",
+    "create_communicator",
 ]
