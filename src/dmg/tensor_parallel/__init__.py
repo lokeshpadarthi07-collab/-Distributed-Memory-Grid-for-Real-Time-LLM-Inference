@@ -29,6 +29,11 @@ from dmg.tensor_parallel.interfaces import (
     ParallelAttentionProtocol,
     TensorSplitterProtocol,
 )
+from dmg.tensor_parallel.sharding import (
+    AttentionHeadSharder,
+    AttentionShardManifest,
+    HeadPartition,
+)
 from dmg.tensor_parallel.splitting import TensorMerger, TensorSplitter
 
 __all__ = [
@@ -51,4 +56,7 @@ __all__ = [
     "MockCommunicatorGroup",
     "TorchDistributedCommunicator",
     "create_communicator",
+    "AttentionHeadSharder",
+    "HeadPartition",
+    "AttentionShardManifest",
 ]
