@@ -13,11 +13,24 @@ from dmg.model_loader.config import (
     dtype_byte_size,
     normalize_dtype,
 )
+from dmg.model_loader.loader import LLMWeightLoader, TransformerLayerWeights
+from dmg.model_loader.mmap_loader import MemoryMappedWeightStore, MemoryMapStats
 from dmg.model_loader.safetensors_io import (
     SafetensorsHeader,
     SafetensorsIndex,
     parse_safetensors_header,
     save_safetensors_file,
+)
+from dmg.model_loader.sharding import (
+    NodeShardPackage,
+    PartitionStrategy,
+    TensorShardDescriptor,
+    WeightDistributor,
+)
+from dmg.model_loader.validator import (
+    CheckpointValidationReport,
+    TensorIntegrityValidator,
+    TensorValidationRecord,
 )
 
 __all__ = [
@@ -30,4 +43,15 @@ __all__ = [
     "SafetensorsIndex",
     "parse_safetensors_header",
     "save_safetensors_file",
+    "MemoryMappedWeightStore",
+    "MemoryMapStats",
+    "LLMWeightLoader",
+    "TransformerLayerWeights",
+    "PartitionStrategy",
+    "TensorShardDescriptor",
+    "NodeShardPackage",
+    "WeightDistributor",
+    "TensorValidationRecord",
+    "CheckpointValidationReport",
+    "TensorIntegrityValidator",
 ]
