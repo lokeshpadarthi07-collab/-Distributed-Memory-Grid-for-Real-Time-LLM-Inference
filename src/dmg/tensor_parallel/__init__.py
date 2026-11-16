@@ -4,6 +4,11 @@ Distributed Memory Grid - Member 3: Tensor Parallelism (Attention Heads).
 
 from __future__ import annotations
 
+from dmg.tensor_parallel.attention import (
+    ColumnParallelLinear,
+    ParallelSelfAttention,
+    RowParallelLinear,
+)
 from dmg.tensor_parallel.communicator import (
     MockCommunicator,
     MockCommunicatorGroup,
@@ -59,4 +64,7 @@ __all__ = [
     "AttentionHeadSharder",
     "HeadPartition",
     "AttentionShardManifest",
+    "ColumnParallelLinear",
+    "RowParallelLinear",
+    "ParallelSelfAttention",
 ]
