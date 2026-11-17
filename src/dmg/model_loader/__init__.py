@@ -13,6 +13,14 @@ from dmg.model_loader.config import (
     dtype_byte_size,
     normalize_dtype,
 )
+from dmg.model_loader.diagnostics import (
+    CheckpointMemoryProfiler,
+    ClusterMemoryReport,
+    NodeMemoryProfile,
+    bf16_words_to_fp32,
+    fp32_to_bf16_words,
+    to_framework_tensor,
+)
 from dmg.model_loader.loader import LLMWeightLoader, TransformerLayerWeights
 from dmg.model_loader.mmap_loader import MemoryMappedWeightStore, MemoryMapStats
 from dmg.model_loader.safetensors_io import (
@@ -54,4 +62,10 @@ __all__ = [
     "TensorValidationRecord",
     "CheckpointValidationReport",
     "TensorIntegrityValidator",
+    "CheckpointMemoryProfiler",
+    "ClusterMemoryReport",
+    "NodeMemoryProfile",
+    "bf16_words_to_fp32",
+    "fp32_to_bf16_words",
+    "to_framework_tensor",
 ]
