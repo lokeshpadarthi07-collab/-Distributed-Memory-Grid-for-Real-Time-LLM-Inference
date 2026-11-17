@@ -40,6 +40,10 @@ from dmg.tensor_parallel.sharding import (
     HeadPartition,
 )
 from dmg.tensor_parallel.splitting import TensorMerger, TensorSplitter
+from dmg.tensor_parallel.synchronizer import (
+    AttentionOutputSynchronizer,
+    TensorParallelAttentionBlock,
+)
 
 __all__ = [
     "AttentionType",
@@ -67,4 +71,6 @@ __all__ = [
     "ColumnParallelLinear",
     "RowParallelLinear",
     "ParallelSelfAttention",
+    "AttentionOutputSynchronizer",
+    "TensorParallelAttentionBlock",
 ]
