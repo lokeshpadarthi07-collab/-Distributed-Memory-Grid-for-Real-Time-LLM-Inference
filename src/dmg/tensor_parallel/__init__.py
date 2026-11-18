@@ -21,6 +21,7 @@ from dmg.tensor_parallel.config import (
     ParallelAttentionConfig,
     TensorParallelConfig,
 )
+from dmg.tensor_parallel.engine import DistributedInferenceEngine
 from dmg.tensor_parallel.exceptions import (
     AttentionHeadSplitError,
     CommunicationSyncError,
@@ -33,6 +34,14 @@ from dmg.tensor_parallel.interfaces import (
     CommunicatorProtocol,
     ParallelAttentionProtocol,
     TensorSplitterProtocol,
+)
+from dmg.tensor_parallel.kv_cache import (
+    DistributedKVCacheManager,
+    RankKVCacheState,
+)
+from dmg.tensor_parallel.profiler import (
+    ProfilingRecord,
+    TensorParallelProfiler,
 )
 from dmg.tensor_parallel.sharding import (
     AttentionHeadSharder,
@@ -73,4 +82,9 @@ __all__ = [
     "ParallelSelfAttention",
     "AttentionOutputSynchronizer",
     "TensorParallelAttentionBlock",
+    "DistributedKVCacheManager",
+    "RankKVCacheState",
+    "TensorParallelProfiler",
+    "ProfilingRecord",
+    "DistributedInferenceEngine",
 ]
