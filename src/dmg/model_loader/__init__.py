@@ -6,6 +6,10 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.async_streamer import (
+    AsyncTensorStreamer,
+    StreamedTensorChunk,
+)
 from dmg.model_loader.config import (
     SUPPORTED_DTYPES,
     ConfigValidator,
@@ -68,4 +72,6 @@ __all__ = [
     "bf16_words_to_fp32",
     "fp32_to_bf16_words",
     "to_framework_tensor",
+    "AsyncTensorStreamer",
+    "StreamedTensorChunk",
 ]
