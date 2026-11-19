@@ -6,6 +6,11 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.quantization import (
+    QuantizationMode,
+    QuantizedTensor,
+    WeightQuantizer,
+)
 from dmg.model_loader.async_streamer import (
     AsyncTensorStreamer,
     StreamedTensorChunk,
@@ -74,4 +79,7 @@ __all__ = [
     "to_framework_tensor",
     "AsyncTensorStreamer",
     "StreamedTensorChunk",
+    "QuantizationMode",
+    "QuantizedTensor",
+    "WeightQuantizer",
 ]
