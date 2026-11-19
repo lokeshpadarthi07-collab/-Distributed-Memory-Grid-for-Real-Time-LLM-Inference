@@ -60,6 +60,9 @@ class ParallelAttentionConfig:
     bias: bool = False
     dropout_prob: float = 0.0
     attention_type: AttentionType = AttentionType.MHA
+    use_rope: bool = False
+    rope_theta: float = 10000.0
+    max_position_embeddings: int = 4096
     tp_config: TensorParallelConfig = field(default_factory=TensorParallelConfig)
 
     def __post_init__(self) -> None:

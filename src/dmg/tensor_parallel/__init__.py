@@ -43,6 +43,10 @@ from dmg.tensor_parallel.profiler import (
     ProfilingRecord,
     TensorParallelProfiler,
 )
+from dmg.tensor_parallel.rotary import (
+    GQAHeadExpander,
+    RotaryEmbedding,
+)
 from dmg.tensor_parallel.sharding import (
     AttentionHeadSharder,
     AttentionShardManifest,
@@ -87,4 +91,6 @@ __all__ = [
     "TensorParallelProfiler",
     "ProfilingRecord",
     "DistributedInferenceEngine",
+    "RotaryEmbedding",
+    "GQAHeadExpander",
 ]

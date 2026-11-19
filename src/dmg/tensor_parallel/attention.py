@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from dmg.tensor_parallel.config import ParallelAttentionConfig, TensorParallelConfig
 from dmg.tensor_parallel.exceptions import ParallelShapeMismatchError
 from dmg.tensor_parallel.interfaces import ParallelAttentionProtocol
+from dmg.tensor_parallel.rotary import GQAHeadExpander, RotaryEmbedding
 
 
 def _matmul_2d(a: List[List[float]], b: List[List[float]]) -> List[List[float]]:
@@ -147,6 +148,15 @@ class ParallelSelfAttention(ParallelAttentionProtocol):
         self.k_proj = k_proj
         self.v_proj = v_proj
         self.o_proj = o_proj
+        self.rotary_emb = (
+            RotaryEmbedding(
+                dim=config.head_dim,
+                max_position_embeddings=config.max_position_embeddings,
+                base=config.rope_theta,
+            )
+            if (config.use_rope and config.head_dim is not None)
+            else None
+        )
 
     def _compute_scaled_dot_product_python(
         self,
@@ -183,6 +193,7 @@ class ParallelSelfAttention(ParallelAttentionProtocol):
         self,
         hidden_states: Any,
         causal_mask: bool = True,
+        start_pos: int = 0,
     ) -> Any:
         """
         Compute rank-local attention forward pass.
@@ -196,10 +207,27 @@ class ParallelSelfAttention(ParallelAttentionProtocol):
         head_dim = self.config.head_dim
         assert head_dim is not None
         num_local_heads = self.config.local_num_heads
+        num_local_kv_heads = self.config.local_num_kv_heads
 
         # Pure Python computation
         if isinstance(q, list):
             seq_len = len(q)
+
+            # Apply parallel Rotary Position Embeddings (RoPE) if configured
+            if self.rotary_emb is not None:
+                q = self.rotary_emb.apply_rotary_to_heads(
+                    q, num_local_heads, head_dim, start_pos=start_pos
+                )
+                k = self.rotary_emb.apply_rotary_to_heads(
+                    k, num_local_kv_heads, head_dim, start_pos=start_pos
+                )
+
+            # GQA head repetition if Query heads > KV heads
+            if num_local_heads > num_local_kv_heads:
+                rep_factor = num_local_heads // num_local_kv_heads
+                k = GQAHeadExpander.repeat_kv(k, num_local_kv_heads, head_dim, rep_factor)
+                v = GQAHeadExpander.repeat_kv(v, num_local_kv_heads, head_dim, rep_factor)
+
             # Separate heads
             local_head_outputs = []
             for h in range(num_local_heads):
