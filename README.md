@@ -20,6 +20,7 @@ This repository contains the complete implementation of **Member 3 (Tensor Paral
 | **Day 6** | Week 2 - Day 6 | **Output Synchronization & End-to-End Test Suite** | `AttentionOutputSynchronizer`, `TensorParallelAttentionBlock`, end-to-end integration test suite with multi-rank parity verification. |
 | **Day 7** | Week 3 - Milestone | **KV-Cache Manager, Latency Profiler & Inference Engine** | `DistributedKVCacheManager`, `TensorParallelProfiler`, `DistributedInferenceEngine`, and runnable cluster demo (`examples/tensor_parallel_demo.py`). |
 | **Day 8** | Week 3 - Milestone | **Parallel RoPE & Grouped-Query Head Expansion** | `RotaryEmbedding` (per-head position rotation without cross-rank communication), `GQAHeadExpander` (repeating KV heads to match Q groups), integrated attention pipeline. |
+| **Day 9** | Week 3 - Milestone | **Memory-Efficient Tiled Attention Kernel** | `OnlineSoftmaxAccumulator`, `ChunkedAttentionKernel` (FlashAttention-style tiled scaled dot-product), sliding-window attention (SWA) support. |
 
 ---
 

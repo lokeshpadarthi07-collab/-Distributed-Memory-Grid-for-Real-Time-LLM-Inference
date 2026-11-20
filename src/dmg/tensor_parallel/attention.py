@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from dmg.tensor_parallel.config import ParallelAttentionConfig, TensorParallelConfig
 from dmg.tensor_parallel.exceptions import ParallelShapeMismatchError
 from dmg.tensor_parallel.interfaces import ParallelAttentionProtocol
+from dmg.tensor_parallel.memory_efficient_attention import ChunkedAttentionKernel
 from dmg.tensor_parallel.rotary import GQAHeadExpander, RotaryEmbedding
 
 
@@ -237,9 +238,19 @@ class ParallelSelfAttention(ParallelAttentionProtocol):
                 k_h = [row[start:end] for row in k]
                 v_h = [row[start:end] for row in v]
 
-                out_h = self._compute_scaled_dot_product_python(
-                    q_h, k_h, v_h, causal_mask=causal_mask
-                )
+                if self.config.use_chunked_attention:
+                    out_h = ChunkedAttentionKernel.chunked_scaled_dot_product(
+                        q_h,
+                        k_h,
+                        v_h,
+                        block_size=self.config.chunk_size,
+                        causal_mask=causal_mask,
+                        sliding_window=self.config.sliding_window,
+                    )
+                else:
+                    out_h = self._compute_scaled_dot_product_python(
+                        q_h, k_h, v_h, causal_mask=causal_mask
+                    )
                 local_head_outputs.append(out_h)
 
             # Concatenate local heads: [seq_len, num_local_heads * head_dim]

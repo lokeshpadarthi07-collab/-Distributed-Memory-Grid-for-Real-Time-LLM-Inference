@@ -39,6 +39,10 @@ from dmg.tensor_parallel.kv_cache import (
     DistributedKVCacheManager,
     RankKVCacheState,
 )
+from dmg.tensor_parallel.memory_efficient_attention import (
+    ChunkedAttentionKernel,
+    OnlineSoftmaxAccumulator,
+)
 from dmg.tensor_parallel.profiler import (
     ProfilingRecord,
     TensorParallelProfiler,
@@ -93,4 +97,6 @@ __all__ = [
     "DistributedInferenceEngine",
     "RotaryEmbedding",
     "GQAHeadExpander",
+    "ChunkedAttentionKernel",
+    "OnlineSoftmaxAccumulator",
 ]

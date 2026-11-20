@@ -63,6 +63,9 @@ class ParallelAttentionConfig:
     use_rope: bool = False
     rope_theta: float = 10000.0
     max_position_embeddings: int = 4096
+    use_chunked_attention: bool = False
+    chunk_size: int = 64
+    sliding_window: Optional[int] = None
     tp_config: TensorParallelConfig = field(default_factory=TensorParallelConfig)
 
     def __post_init__(self) -> None:
