@@ -6,6 +6,11 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.page_warmer import (
+    CheckpointWarmupSummary,
+    MemoryMappedPageWarmer,
+    PageWarmupResult,
+)
 from dmg.model_loader.quantization import (
     QuantizationMode,
     QuantizedTensor,
@@ -82,4 +87,7 @@ __all__ = [
     "QuantizationMode",
     "QuantizedTensor",
     "WeightQuantizer",
+    "MemoryMappedPageWarmer",
+    "PageWarmupResult",
+    "CheckpointWarmupSummary",
 ]
