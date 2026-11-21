@@ -43,6 +43,11 @@ from dmg.tensor_parallel.memory_efficient_attention import (
     ChunkedAttentionKernel,
     OnlineSoftmaxAccumulator,
 )
+from dmg.tensor_parallel.paged_cache import (
+    BlockTable,
+    PagedKVCacheManager,
+    PhysicalBlock,
+)
 from dmg.tensor_parallel.profiler import (
     ProfilingRecord,
     TensorParallelProfiler,
@@ -99,4 +104,7 @@ __all__ = [
     "GQAHeadExpander",
     "ChunkedAttentionKernel",
     "OnlineSoftmaxAccumulator",
+    "PhysicalBlock",
+    "BlockTable",
+    "PagedKVCacheManager",
 ]

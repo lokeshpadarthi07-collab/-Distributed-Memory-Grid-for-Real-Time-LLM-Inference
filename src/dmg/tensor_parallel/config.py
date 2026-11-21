@@ -66,6 +66,8 @@ class ParallelAttentionConfig:
     use_chunked_attention: bool = False
     chunk_size: int = 64
     sliding_window: Optional[int] = None
+    paged_cache_block_size: int = 16
+    max_num_paged_blocks: int = 256
     tp_config: TensorParallelConfig = field(default_factory=TensorParallelConfig)
 
     def __post_init__(self) -> None:
