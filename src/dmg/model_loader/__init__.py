@@ -6,6 +6,12 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.eviction import (
+    DynamicLayerEvictionManager,
+    EvictionCycleResult,
+    EvictionPolicy,
+    TensorEvictionCandidate,
+)
 from dmg.model_loader.page_warmer import (
     CheckpointWarmupSummary,
     MemoryMappedPageWarmer,
@@ -90,4 +96,8 @@ __all__ = [
     "MemoryMappedPageWarmer",
     "PageWarmupResult",
     "CheckpointWarmupSummary",
+    "DynamicLayerEvictionManager",
+    "EvictionPolicy",
+    "EvictionCycleResult",
+    "TensorEvictionCandidate",
 ]
