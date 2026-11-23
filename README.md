@@ -22,6 +22,7 @@ This repository contains the complete implementation of **Member 3 (Tensor Paral
 | **Day 8** | Week 3 - Milestone | **Parallel RoPE & Grouped-Query Head Expansion** | `RotaryEmbedding` (per-head position rotation without cross-rank communication), `GQAHeadExpander` (repeating KV heads to match Q groups), integrated attention pipeline. |
 | **Day 9** | Week 3 - Milestone | **Memory-Efficient Tiled Attention Kernel** | `OnlineSoftmaxAccumulator`, `ChunkedAttentionKernel` (FlashAttention-style tiled scaled dot-product), sliding-window attention (SWA) support. |
 | **Day 10** | Week 3 - Milestone | **Paged Attention & Virtual Memory KV-Cache Block Manager** | `PhysicalBlock`, `BlockTable`, `PagedKVCacheManager` (vLLM-style virtual memory block allocation and zero-fragmentation paging per rank). |
+| **Day 11** | Week 3 - Milestone | **Week 1 & 2 Deliverables Audit & Verification Suite** | Complete audit report ([`docs/week1_week2_deliverables_report.md`](docs/week1_week2_deliverables_report.md)) and verification suite (`test_week1_week2_deliverables.py`). |
 
 ---
 

@@ -31,6 +31,13 @@ def _get_shape(tensor: Any) -> Tuple[int, ...]:
 
 def _slice_dim(tensor: Any, dim: int, start: int, end: int) -> Any:
     """Slice tensor along specified dimension across PyTorch, NumPy, and lists."""
+    if isinstance(tensor, list):
+        if dim == 0:
+            return tensor[start:end]
+        elif dim == 1:
+            return [row[start:end] for row in tensor]
+        raise NotImplementedError(f"List slicing along dim {dim} not supported.")
+
     if hasattr(tensor, "__getitem__"):
         ndim = len(_get_shape(tensor))
         dim = dim if dim >= 0 else ndim + dim
