@@ -15,6 +15,12 @@ from dmg.tensor_parallel.communicator import (
     TorchDistributedCommunicator,
     create_communicator,
 )
+from dmg.tensor_parallel.compression import (
+    ActivationCompressor,
+    CompressedTensor,
+    QuantizationPrecision,
+    QuantizedCommunicator,
+)
 from dmg.tensor_parallel.config import (
     AttentionType,
     CommBackend,
@@ -107,4 +113,8 @@ __all__ = [
     "PhysicalBlock",
     "BlockTable",
     "PagedKVCacheManager",
+    "QuantizationPrecision",
+    "CompressedTensor",
+    "ActivationCompressor",
+    "QuantizedCommunicator",
 ]

@@ -37,6 +37,8 @@ class TensorParallelConfig:
     init_method: str = "tcp://127.0.0.1:29500"
     enable_profiling: bool = False
     timeout_seconds: float = 30.0
+    enable_comm_compression: bool = False
+    compression_precision: str = "fp32"
 
     def __post_init__(self) -> None:
         if self.world_size < 1:
