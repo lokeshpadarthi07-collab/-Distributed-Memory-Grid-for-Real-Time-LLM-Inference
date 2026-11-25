@@ -6,6 +6,11 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.manifest import (
+    CheckpointManifest,
+    ManifestBuilder,
+    TensorFingerprint,
+)
 from dmg.model_loader.eviction import (
     DynamicLayerEvictionManager,
     EvictionCycleResult,
@@ -100,4 +105,7 @@ __all__ = [
     "EvictionPolicy",
     "EvictionCycleResult",
     "TensorEvictionCandidate",
+    "CheckpointManifest",
+    "ManifestBuilder",
+    "TensorFingerprint",
 ]
