@@ -6,6 +6,11 @@ zero-copy memory-mapped weight loading, tensor sharding for distributed
 nodes, and weight integrity verification.
 """
 
+from dmg.model_loader.topology_orchestrator import (
+    ShardAllocationPlan,
+    ShardTopologyOrchestrator,
+    TopologyPreflightReport,
+)
 from dmg.model_loader.manifest import (
     CheckpointManifest,
     ManifestBuilder,
@@ -108,4 +113,7 @@ __all__ = [
     "CheckpointManifest",
     "ManifestBuilder",
     "TensorFingerprint",
+    "ShardAllocationPlan",
+    "TopologyPreflightReport",
+    "ShardTopologyOrchestrator",
 ]
