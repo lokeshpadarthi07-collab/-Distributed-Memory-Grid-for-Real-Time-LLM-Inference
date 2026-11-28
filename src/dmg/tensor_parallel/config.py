@@ -70,6 +70,8 @@ class ParallelAttentionConfig:
     sliding_window: Optional[int] = None
     paged_cache_block_size: int = 16
     max_num_paged_blocks: int = 256
+    enable_speculative_verification: bool = False
+    max_speculative_tokens: int = 8
     tp_config: TensorParallelConfig = field(default_factory=TensorParallelConfig)
 
     def __post_init__(self) -> None:

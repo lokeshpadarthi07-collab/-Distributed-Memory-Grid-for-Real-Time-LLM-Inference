@@ -24,6 +24,7 @@ This repository contains the complete implementation of **Member 3 (Tensor Paral
 | **Day 10** | Week 3 - Milestone | **Paged Attention & Virtual Memory KV-Cache Block Manager** | `PhysicalBlock`, `BlockTable`, `PagedKVCacheManager` (vLLM-style virtual memory block allocation and zero-fragmentation paging per rank). |
 | **Day 11** | Week 3 - Milestone | **Week 1 & 2 Deliverables Audit & Verification Suite** | Complete audit report ([`docs/week1_week2_deliverables_report.md`](docs/week1_week2_deliverables_report.md)) and verification suite (`test_week1_week2_deliverables.py`). |
 | **Day 12** | Week 3 - Milestone | **Quantized Communication & Bandwidth Compressor** | `ActivationCompressor` (INT8 / FP8-E4M3 dynamic quantization), `QuantizedCommunicator` (4x network transmission bandwidth reduction during All-Reduce). |
+| **Day 13** | Week 3 - Milestone | **Speculative Decoding Parallel Attention & Tree-Attention** | `SpeculativeTreeMask` (DAG attention masks for candidate token trees), `SpeculativeAttentionVerifier` (per-rank candidate evaluation, selective commit & KV rollback). |
 
 ---
 

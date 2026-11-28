@@ -67,6 +67,10 @@ from dmg.tensor_parallel.sharding import (
     AttentionShardManifest,
     HeadPartition,
 )
+from dmg.tensor_parallel.speculative import (
+    SpeculativeAttentionVerifier,
+    SpeculativeTreeMask,
+)
 from dmg.tensor_parallel.splitting import TensorMerger, TensorSplitter
 from dmg.tensor_parallel.synchronizer import (
     AttentionOutputSynchronizer,
@@ -117,4 +121,6 @@ __all__ = [
     "CompressedTensor",
     "ActivationCompressor",
     "QuantizedCommunicator",
+    "SpeculativeTreeMask",
+    "SpeculativeAttentionVerifier",
 ]
